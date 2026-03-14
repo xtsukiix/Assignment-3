@@ -32,7 +32,72 @@
     </url>
     <url>
         <loc>
+            http://localhost:8000/shop/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://localhost:8000/cart/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://localhost:8000/checkout/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://localhost:8000/my-account/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://localhost:8000/product/pikachu-plush-keychain/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://localhost:8000/product/eevee-dream-hoodie/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://localhost:8000/product/snorlax-sleep-mask/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://localhost:8000/product/poke-ball-water-bottle/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://localhost:8000/product/starter-sticker-pack/
+        </loc>
+    </url>
+    <url>
+        <loc>
             http://localhost:8000/category/uncategorized/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://localhost:8000/product-category/plush/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://localhost:8000/product-category/apparel/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://localhost:8000/product-category/stickers/
+        </loc>
+    </url>
+    <url>
+        <loc>
+            http://localhost:8000/product-category/drinkware/
         </loc>
     </url>
     <url>
