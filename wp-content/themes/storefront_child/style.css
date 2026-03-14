@@ -3,10 +3,91 @@ Theme Name:     storefront_child
 Description:    child theme
 Author:         linhngyn
 Template:       storefront
-
-(optional values you can add: Theme URI, Author URI, Version, License, License URI, Tags, Text Domain)
 */
 
-.entry-title a{
-    color:#efb1d7;
+body,
+button,
+input,
+textarea,
+select {
+    font-family: 'Fredoka', sans-serif;
+}
+
+body {
+    background-color: #fffafc;
+    color: #3b2f38;
+}
+
+a {
+    color: #efb1d7;
+}
+
+a:hover {
+    color: #d96cb0;
+}
+
+.entry-title a,
+.woocommerce-loop-product__title,
+.product_title {
+    color: #d96cb0;
+    font-weight: 600;
+}
+
+.site-header {
+    background-color: #ffeaf5;
+    border-bottom: 3px solid #efb1d7;
+}
+
+.site-title a,
+.site-branding .site-description {
+    color: #c04d93;
+}
+
+button,
+input[type="button"],
+input[type="submit"],
+.button,
+.added_to_cart,
+.wp-block-button__link {
+    background-color: #efb1d7;
+    color: #ffffff;
+    border-radius: 999px;
+    padding: 0.7em 1.2em;
+    border: none;
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+.button:hover,
+.added_to_cart:hover,
+.wp-block-button__link:hover {
+    background-color: #d96cb0;
+    color: #ffffff;
+}
+
+.woocommerce ul.products li.product,
+.woocommerce-page ul.products li.product,
+.single-product div.product {
+    background: #ffffff;
+    border: 2px solid #ffd3e8;
+    border-radius: 18px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.woocommerce div.product p.price,
+.woocommerce div.product span.price,
+.woocommerce ul.products li.product .price {
+    color: #7d5ba6;
+    font-weight: 700;
+}
+
+.woocommerce ul.products li.product .button {
+    margin-top: 10px;
+}
+
+.site-footer {
+    background-color: #ffeaf5;
+    color: #7a5d70;
 }
