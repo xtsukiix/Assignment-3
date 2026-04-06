@@ -3943,3 +3943,963 @@ Stack trace:
 #7 /workspaces/Assignment-3/.wordpress/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
 #8 {main}
   thrown in /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php on line 1019
+[14-Mar-2026 04:19:21 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-03-14 04:19:21' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=48, last_attempt_gmt='2026-03-14 04:19:21', last_attempt_local='2026-03-14 00:19:21'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=48, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2026-03-14 04:19:21, pending, 2026-03-14 04:19:21, 2026-03-14 00:19:21</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4117 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /workspaces/Assignment-3/.wordpress/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(48, 25, NULL, '', '')
+#3 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'WP Cron')
+#6 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): ActionScheduler_QueueRunner->run('WP Cron')
+#7 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#8 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(570): WP_Hook->do_action(Array)
+#9 /workspaces/Assignment-3/.wordpress/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#10 {main}</pre>
+ for query UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-03-14 04:19:21' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=48, last_attempt_gmt='2026-03-14 04:19:21', last_attempt_local='2026-03-14 00:19:21' made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, ActionScheduler_QueueRunner->do_batch, ActionScheduler_HybridStore->stake_claim, ActionScheduler_DBStore->stake_claim, ActionScheduler_DBStore->claim_actions, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[14-Mar-2026 04:19:21 UTC] PHP Fatal error:  Uncaught RuntimeException: Unable to claim actions. Database error: <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-03-14 04:19:21' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=48, last_attempt_gmt='2026-03-14 04:19:21', last_attempt_local='2026-03-14 00:19:21'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=48, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2026-03-14 04:19:21, pending, 2026-03-14 04:19:21, 2026-03-14 00:19:21</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4117 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /workspaces/Assignment-3/.wordpress/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(48, 25, NULL, '', '')
+#3 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'WP Cron')
+#6 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): ActionScheduler_QueueRunner->run('WP Cron')
+#7 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#8 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(570): WP_Hook->do_action(Array)
+#9 /workspaces/Assignment-3/.wordpress/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#10 {main}</pre>
+. in /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php:1019
+Stack trace:
+#0 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(48, 25, NULL, '', '')
+#1 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#2 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#3 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'WP Cron')
+#4 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): ActionScheduler_QueueRunner->run('WP Cron')
+#5 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#6 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(570): WP_Hook->do_action(Array)
+#7 /workspaces/Assignment-3/.wordpress/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#8 {main}
+  thrown in /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php on line 1019
+[06-Apr-2026 02:37:03 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-04-06 02:37:03' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=49, last_attempt_gmt='2026-04-06 02:37:03', last_attempt_local='2026-04-05 22:37:03'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=49, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2026-04-06 02:37:03, pending, 2026-04-06 02:37:03, 2026-04-05 22:37:03</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4117 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /workspaces/Assignment-3/.wordpress/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(49, 25, NULL, '', '')
+#3 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'WP Cron')
+#6 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): ActionScheduler_QueueRunner->run('WP Cron')
+#7 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#8 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(570): WP_Hook->do_action(Array)
+#9 /workspaces/Assignment-3/.wordpress/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#10 {main}</pre>
+ for query UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-04-06 02:37:03' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=49, last_attempt_gmt='2026-04-06 02:37:03', last_attempt_local='2026-04-05 22:37:03' made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, ActionScheduler_QueueRunner->do_batch, ActionScheduler_HybridStore->stake_claim, ActionScheduler_DBStore->stake_claim, ActionScheduler_DBStore->claim_actions, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[06-Apr-2026 02:37:03 UTC] PHP Fatal error:  Uncaught RuntimeException: Unable to claim actions. Database error: <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-04-06 02:37:03' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=49, last_attempt_gmt='2026-04-06 02:37:03', last_attempt_local='2026-04-05 22:37:03'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=49, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2026-04-06 02:37:03, pending, 2026-04-06 02:37:03, 2026-04-05 22:37:03</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4117 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /workspaces/Assignment-3/.wordpress/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(49, 25, NULL, '', '')
+#3 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'WP Cron')
+#6 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): ActionScheduler_QueueRunner->run('WP Cron')
+#7 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#8 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(570): WP_Hook->do_action(Array)
+#9 /workspaces/Assignment-3/.wordpress/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#10 {main}</pre>
+. in /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php:1019
+Stack trace:
+#0 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(49, 25, NULL, '', '')
+#1 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#2 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#3 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'WP Cron')
+#4 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): ActionScheduler_QueueRunner->run('WP Cron')
+#5 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#6 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(570): WP_Hook->do_action(Array)
+#7 /workspaces/Assignment-3/.wordpress/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#8 {main}
+  thrown in /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php on line 1019
+[06-Apr-2026 02:38:20 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-04-06 02:38:20' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=50, last_attempt_gmt='2026-04-06 02:38:20', last_attempt_local='2026-04-05 22:38:20'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=50, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2026-04-06 02:38:20, pending, 2026-04-06 02:38:20, 2026-04-05 22:38:20</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4117 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /workspaces/Assignment-3/.wordpress/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(50, 25, NULL, '', '')
+#3 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'WP Cron')
+#6 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): ActionScheduler_QueueRunner->run('WP Cron')
+#7 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#8 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(570): WP_Hook->do_action(Array)
+#9 /workspaces/Assignment-3/.wordpress/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#10 {main}</pre>
+ for query UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-04-06 02:38:20' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=50, last_attempt_gmt='2026-04-06 02:38:20', last_attempt_local='2026-04-05 22:38:20' made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, ActionScheduler_QueueRunner->do_batch, ActionScheduler_HybridStore->stake_claim, ActionScheduler_DBStore->stake_claim, ActionScheduler_DBStore->claim_actions, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[06-Apr-2026 02:38:20 UTC] PHP Fatal error:  Uncaught RuntimeException: Unable to claim actions. Database error: <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-04-06 02:38:20' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=50, last_attempt_gmt='2026-04-06 02:38:20', last_attempt_local='2026-04-05 22:38:20'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=50, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2026-04-06 02:38:20, pending, 2026-04-06 02:38:20, 2026-04-05 22:38:20</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4117 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /workspaces/Assignment-3/.wordpress/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(50, 25, NULL, '', '')
+#3 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'WP Cron')
+#6 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): ActionScheduler_QueueRunner->run('WP Cron')
+#7 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#8 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(570): WP_Hook->do_action(Array)
+#9 /workspaces/Assignment-3/.wordpress/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#10 {main}</pre>
+. in /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php:1019
+Stack trace:
+#0 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(50, 25, NULL, '', '')
+#1 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#2 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#3 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'WP Cron')
+#4 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): ActionScheduler_QueueRunner->run('WP Cron')
+#5 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#6 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(570): WP_Hook->do_action(Array)
+#7 /workspaces/Assignment-3/.wordpress/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#8 {main}
+  thrown in /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php on line 1019
+[06-Apr-2026 02:38:26 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-04-06 02:38:26' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=51, last_attempt_gmt='2026-04-06 02:38:26', last_attempt_local='2026-04-05 22:38:26'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=51, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2026-04-06 02:38:26, pending, 2026-04-06 02:38:26, 2026-04-05 22:38:26</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4117 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /workspaces/Assignment-3/.wordpress/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(51, 25, NULL, '', '')
+#3 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'Async Request')
+#6 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): ActionScheduler_QueueRunner->run('Async Request')
+#7 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#8 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(522): WP_Hook->do_action(Array)
+#9 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_AsyncRequest_QueueRunner.php(48): do_action('action_schedule...', 'Async Request')
+#10 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/includes/libraries/wp-async-request.php(147): ActionScheduler_AsyncRequest_QueueRunner->handle()
+#11 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): WP_Async_Request->maybe_handle('')
+#12 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#13 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(522): WP_Hook->do_action(Array)
+#14 /workspaces/Assignment-3/.wordpress/wp-admin/admin-ajax.php(192): do_action('wp_ajax_as_asyn...')
+#15 {main}</pre>
+ for query UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-04-06 02:38:26' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=51, last_attempt_gmt='2026-04-06 02:38:26', last_attempt_local='2026-04-05 22:38:26' made by do_action('wp_ajax_as_async_request_queue_runner'), WP_Hook->do_action, WP_Hook->apply_filters, WP_Async_Request->maybe_handle, ActionScheduler_AsyncRequest_QueueRunner->handle, do_action('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, ActionScheduler_QueueRunner->do_batch, ActionScheduler_HybridStore->stake_claim, ActionScheduler_DBStore->stake_claim, ActionScheduler_DBStore->claim_actions, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[06-Apr-2026 02:38:26 UTC] PHP Fatal error:  Uncaught RuntimeException: Unable to claim actions. Database error: <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-04-06 02:38:26' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=51, last_attempt_gmt='2026-04-06 02:38:26', last_attempt_local='2026-04-05 22:38:26'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=51, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2026-04-06 02:38:26, pending, 2026-04-06 02:38:26, 2026-04-05 22:38:26</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4117 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /workspaces/Assignment-3/.wordpress/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(51, 25, NULL, '', '')
+#3 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'Async Request')
+#6 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): ActionScheduler_QueueRunner->run('Async Request')
+#7 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#8 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(522): WP_Hook->do_action(Array)
+#9 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_AsyncRequest_QueueRunner.php(48): do_action('action_schedule...', 'Async Request')
+#10 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/includes/libraries/wp-async-request.php(147): ActionScheduler_AsyncRequest_QueueRunner->handle()
+#11 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): WP_Async_Request->maybe_handle('')
+#12 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#13 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(522): WP_Hook->do_action(Array)
+#14 /workspaces/Assignment-3/.wordpress/wp-admin/admin-ajax.php(192): do_action('wp_ajax_as_asyn...')
+#15 {main}</pre>
+. in /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php:1019
+Stack trace:
+#0 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(51, 25, NULL, '', '')
+#1 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#2 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#3 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'Async Request')
+#4 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): ActionScheduler_QueueRunner->run('Async Request')
+#5 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#6 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(522): WP_Hook->do_action(Array)
+#7 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_AsyncRequest_QueueRunner.php(48): do_action('action_schedule...', 'Async Request')
+#8 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/includes/libraries/wp-async-request.php(147): ActionScheduler_AsyncRequest_QueueRunner->handle()
+#9 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): WP_Async_Request->maybe_handle('')
+#10 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#11 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(522): WP_Hook->do_action(Array)
+#12 /workspaces/Assignment-3/.wordpress/wp-admin/admin-ajax.php(192): do_action('wp_ajax_as_asyn...')
+#13 {main}
+  thrown in /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php on line 1019
+[06-Apr-2026 02:39:11 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-04-06 02:39:11' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=52, last_attempt_gmt='2026-04-06 02:39:11', last_attempt_local='2026-04-05 22:39:11'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=52, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2026-04-06 02:39:11, pending, 2026-04-06 02:39:11, 2026-04-05 22:39:11</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4117 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /workspaces/Assignment-3/.wordpress/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(52, 25, NULL, '', '')
+#3 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'WP Cron')
+#6 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): ActionScheduler_QueueRunner->run('WP Cron')
+#7 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#8 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(570): WP_Hook->do_action(Array)
+#9 /workspaces/Assignment-3/.wordpress/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#10 {main}</pre>
+ for query UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-04-06 02:39:11' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=52, last_attempt_gmt='2026-04-06 02:39:11', last_attempt_local='2026-04-05 22:39:11' made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, ActionScheduler_QueueRunner->do_batch, ActionScheduler_HybridStore->stake_claim, ActionScheduler_DBStore->stake_claim, ActionScheduler_DBStore->claim_actions, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[06-Apr-2026 02:39:11 UTC] PHP Fatal error:  Uncaught RuntimeException: Unable to claim actions. Database error: <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-04-06 02:39:11' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=52, last_attempt_gmt='2026-04-06 02:39:11', last_attempt_local='2026-04-05 22:39:11'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=52, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2026-04-06 02:39:11, pending, 2026-04-06 02:39:11, 2026-04-05 22:39:11</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4117 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /workspaces/Assignment-3/.wordpress/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(52, 25, NULL, '', '')
+#3 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'WP Cron')
+#6 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): ActionScheduler_QueueRunner->run('WP Cron')
+#7 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#8 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(570): WP_Hook->do_action(Array)
+#9 /workspaces/Assignment-3/.wordpress/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#10 {main}</pre>
+. in /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php:1019
+Stack trace:
+#0 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(52, 25, NULL, '', '')
+#1 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#2 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#3 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'WP Cron')
+#4 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): ActionScheduler_QueueRunner->run('WP Cron')
+#5 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#6 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(570): WP_Hook->do_action(Array)
+#7 /workspaces/Assignment-3/.wordpress/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#8 {main}
+  thrown in /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php on line 1019
+[06-Apr-2026 02:40:06 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-04-06 02:40:06' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=53, last_attempt_gmt='2026-04-06 02:40:06', last_attempt_local='2026-04-05 22:40:06'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=53, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2026-04-06 02:40:06, pending, 2026-04-06 02:40:06, 2026-04-05 22:40:06</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4117 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /workspaces/Assignment-3/.wordpress/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(53, 25, NULL, '', '')
+#3 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'Async Request')
+#6 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): ActionScheduler_QueueRunner->run('Async Request')
+#7 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#8 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(522): WP_Hook->do_action(Array)
+#9 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_AsyncRequest_QueueRunner.php(48): do_action('action_schedule...', 'Async Request')
+#10 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/includes/libraries/wp-async-request.php(147): ActionScheduler_AsyncRequest_QueueRunner->handle()
+#11 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): WP_Async_Request->maybe_handle('')
+#12 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#13 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(522): WP_Hook->do_action(Array)
+#14 /workspaces/Assignment-3/.wordpress/wp-admin/admin-ajax.php(192): do_action('wp_ajax_as_asyn...')
+#15 {main}</pre>
+ for query UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-04-06 02:40:06' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=53, last_attempt_gmt='2026-04-06 02:40:06', last_attempt_local='2026-04-05 22:40:06' made by do_action('wp_ajax_as_async_request_queue_runner'), WP_Hook->do_action, WP_Hook->apply_filters, WP_Async_Request->maybe_handle, ActionScheduler_AsyncRequest_QueueRunner->handle, do_action('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, ActionScheduler_QueueRunner->do_batch, ActionScheduler_HybridStore->stake_claim, ActionScheduler_DBStore->stake_claim, ActionScheduler_DBStore->claim_actions, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[06-Apr-2026 02:40:06 UTC] PHP Fatal error:  Uncaught RuntimeException: Unable to claim actions. Database error: <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-04-06 02:40:06' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=53, last_attempt_gmt='2026-04-06 02:40:06', last_attempt_local='2026-04-05 22:40:06'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=53, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2026-04-06 02:40:06, pending, 2026-04-06 02:40:06, 2026-04-05 22:40:06</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4117 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /workspaces/Assignment-3/.wordpress/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(53, 25, NULL, '', '')
+#3 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'Async Request')
+#6 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): ActionScheduler_QueueRunner->run('Async Request')
+#7 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#8 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(522): WP_Hook->do_action(Array)
+#9 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_AsyncRequest_QueueRunner.php(48): do_action('action_schedule...', 'Async Request')
+#10 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/includes/libraries/wp-async-request.php(147): ActionScheduler_AsyncRequest_QueueRunner->handle()
+#11 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): WP_Async_Request->maybe_handle('')
+#12 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#13 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(522): WP_Hook->do_action(Array)
+#14 /workspaces/Assignment-3/.wordpress/wp-admin/admin-ajax.php(192): do_action('wp_ajax_as_asyn...')
+#15 {main}</pre>
+. in /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php:1019
+Stack trace:
+#0 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(53, 25, NULL, '', '')
+#1 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#2 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#3 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'Async Request')
+#4 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): ActionScheduler_QueueRunner->run('Async Request')
+#5 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#6 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(522): WP_Hook->do_action(Array)
+#7 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_AsyncRequest_QueueRunner.php(48): do_action('action_schedule...', 'Async Request')
+#8 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/includes/libraries/wp-async-request.php(147): ActionScheduler_AsyncRequest_QueueRunner->handle()
+#9 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): WP_Async_Request->maybe_handle('')
+#10 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#11 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(522): WP_Hook->do_action(Array)
+#12 /workspaces/Assignment-3/.wordpress/wp-admin/admin-ajax.php(192): do_action('wp_ajax_as_asyn...')
+#13 {main}
+  thrown in /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php on line 1019
+[06-Apr-2026 02:40:20 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>
+			SELECT
+				CONCAT(YEAR(wp_wc_order_stats.`date_paid`), '-', LPAD( FLOOR( ( DAYOFYEAR(wp_wc_order_stats.`date_paid`) + ( ( DATE_FORMAT(MAKEDATE(YEAR(wp_wc_order_stats.`date_paid`),1), '%w') - 0 + 7 ) % 7 ) - 1 ) / 7  ) + 1 , 2, '0')) AS time_interval
+			FROM
+				wp_wc_order_stats
+				LEFT JOIN (
+					SELECT
+						order_id,
+						SUM(discount_amount) AS discount_amount,
+						COUNT(DISTINCT coupon_id) AS coupons_count
+					FROM
+						wp_wc_order_coupon_lookup
+					GROUP BY
+						order_id
+					) order_coupon_lookup
+					ON order_coupon_lookup.order_id = wp_wc_order_stats.order_id
+			WHERE
+				1=1
+				AND ( wp_wc_order_stats.status NOT IN ( 'wc-auto-draft','wc-trash','wc-pending','wc-failed','wc-cancelled','wc-checkout-draft' ) ) AND wp_wc_order_stats.`date_paid` <= '2026-04-05 22:40:16' AND wp_wc_order_stats.`date_paid` >= '2026-04-05 00:00:00'
+		
+				GROUP BY
+					time_interval
+			</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: 
+			SELECT
+				(YEAR(wp_wc_order_stats.`date_paid`)|| :param0 || LPAD( FLOOR( ( DAYOFYEAR(wp_wc_order_stats.`date_paid`) + ( ( STRFTIME(&#039;1&#039;,MAKEDATE(YEAR(wp_wc_order_stats.`date_paid`)), :param1 ) - 0 + 7 ) % 7 ) - 1 ) / 7  ) + 1 , 2, :param2 )) AS time_interval
+			FROM
+				wp_wc_order_stats
+				LEFT JOIN (
+					SELECT
+						order_id,
+						SUM(discount_amount) AS discount_amount,
+						COUNT(DISTINCT coupon_id) AS coupons_count
+					FROM
+						wp_wc_order_coupon_lookup
+					GROUP BY
+						order_id
+					) order_coupon_lookup
+					ON order_coupon_lookup.order_id = wp_wc_order_stats.order_id
+			WHERE
+				1=1
+				AND ( wp_wc_order_stats.status NOT IN ( :param3 ,:param4 ,:param5 ,:param6 ,:param7 ,:param8  ) ) AND wp_wc_order_stats.`date_paid` &lt;= :param9  AND wp_wc_order_stats.`date_paid` &gt;= :param10 
+		
+				GROUP BY
+					time_interval
+			 | parameters: -, %w, 0, wc-auto-draft, wc-trash, wc-pending, wc-failed, wc-cancelled, wc-checkout-draft, 2026-04-05 22:40:16, 2026-04-05 00:00:00</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4117 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 no such function: LPAD.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /workspaces/Assignment-3/.wordpress/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /workspaces/Assignment-3/.wordpress/wp-includes/class-wpdb.php(3117): WP_SQLite_DB->query('\n\t\t\tSELECT\n\t\t\t\t...')
+#2 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/Orders/Stats/DataStore.php(399): wpdb->get_col('\n\t\t\tSELECT\n\t\t\t\t...')
+#3 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/StatsDataStoreTrait.php(111): Automattic\WooCommerce\Admin\API\Reports\Orders\Stats\DataStore->get_noncached_stats_data(Array, Array, Object(stdClass), 1)
+#4 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/DataStore.php(237): Automattic\WooCommerce\Admin\API\Reports\Orders\Stats\DataStore->get_noncached_data(Array)
+#5 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/includes/class-wc-data-store.php(224): Automattic\WooCommerce\Admin\API\Reports\DataStore->get_data(Array)
+#6 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/Revenue/Query.php(67): WC_Data_Store->__call('get_data', Array)
+#7 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/Revenue/Stats/Controller.php(71): Automattic\WooCommerce\Admin\API\Reports\Revenue\Query->get_data()
+#8 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/GenericStatsController.php(223): Automattic\WooCommerce\Admin\API\Reports\Revenue\Stats\Controller->get_datastore_data(Array)
+#9 /workspaces/Assignment-3/.wordpress/wp-includes/rest-api/class-wp-rest-server.php(1292): Automattic\WooCommerce\Admin\API\Reports\GenericStatsController->get_items(Object(WP_REST_Request))
+#10 /workspaces/Assignment-3/.wordpress/wp-includes/rest-api/class-wp-rest-server.php(1125): WP_REST_Server->respond_to_request(Object(WP_REST_Request), '/wc-analytics/r...', Array, NULL)
+#11 /workspaces/Assignment-3/.wordpress/wp-includes/rest-api.php(594): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#12 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/PerformanceIndicators/Controller.php(389): rest_do_request(Object(WP_REST_Request))
+#13 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/PerformanceIndicators/Controller.php(426): Automattic\WooCommerce\Admin\API\Reports\PerformanceIndicators\Controller->get_stats_data('revenue', Array)
+#14 /workspaces/Assignment-3/.wordpress/wp-includes/rest-api/class-wp-rest-server.php(1292): Automattic\WooCommerce\Admin\API\Reports\PerformanceIndicators\Controller->get_items(Object(WP_REST_Request))
+#15 /workspaces/Assignment-3/.wordpress/wp-includes/rest-api/class-wp-rest-server.php(1125): WP_REST_Server->respond_to_request(Object(WP_REST_Request), '/wc-analytics/r...', Array, NULL)
+#16 /workspaces/Assignment-3/.wordpress/wp-includes/rest-api/class-wp-rest-server.php(439): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#17 /workspaces/Assignment-3/.wordpress/wp-includes/rest-api.php(467): WP_REST_Server->serve_request('/wc-analytics/r...')
+#18 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): rest_api_loaded(Object(WP))
+#19 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters(NULL, Array)
+#20 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(570): WP_Hook->do_action(Array)
+#21 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp.php(418): do_action_ref_array('parse_request', Array)
+#22 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp.php(821): WP->parse_request('')
+#23 /workspaces/Assignment-3/.wordpress/wp-includes/functions.php(1343): WP->main('')
+#24 /workspaces/Assignment-3/.wordpress/wp-blog-header.php(16): wp()
+#25 /workspaces/Assignment-3/.wordpress/index.php(17): require('/workspaces/Ass...')
+#26 {main}</pre>
+ for query 
+			SELECT
+				CONCAT(YEAR(wp_wc_order_stats.`date_paid`), '-', LPAD( FLOOR( ( DAYOFYEAR(wp_wc_order_stats.`date_paid`) + ( ( DATE_FORMAT(MAKEDATE(YEAR(wp_wc_order_stats.`date_paid`),1), '%w') - 0 + 7 ) % 7 ) - 1 ) / 7  ) + 1 , 2, '0')) AS time_interval
+			FROM
+				wp_wc_order_stats
+				LEFT JOIN (
+					SELECT
+						order_id,
+						SUM(discount_amount) AS discount_amount,
+						COUNT(DISTINCT coupon_id) AS coupons_count
+					FROM
+						wp_wc_order_coupon_lookup
+					GROUP BY
+						order_id
+					) order_coupon_lookup
+					ON order_coupon_lookup.order_id = wp_wc_order_stats.order_id
+			WHERE
+				1=1
+				AND ( wp_wc_order_stats.status NOT IN ( 'wc-auto-draft','wc-trash','wc-pending','wc-failed','wc-cancelled','wc-checkout-draft' ) ) AND wp_wc_order_stats.`date_paid` <= '2026-04-05 22:40:16' AND wp_wc_order_stats.`date_paid` >= '2026-04-05 00:00:00'
+		
+				GROUP BY
+					time_interval
+			 made by require('wp-blog-header.php'), wp, WP->main, WP->parse_request, do_action_ref_array('parse_request'), WP_Hook->do_action, WP_Hook->apply_filters, rest_api_loaded, WP_REST_Server->serve_request, WP_REST_Server->dispatch, WP_REST_Server->respond_to_request, Automattic\WooCommerce\Admin\API\Reports\PerformanceIndicators\Controller->get_items, Automattic\WooCommerce\Admin\API\Reports\PerformanceIndicators\Controller->get_stats_data, rest_do_request, WP_REST_Server->dispatch, WP_REST_Server->respond_to_request, Automattic\WooCommerce\Admin\API\Reports\GenericStatsController->get_items, Automattic\WooCommerce\Admin\API\Reports\Revenue\Stats\Controller->get_datastore_data, Automattic\WooCommerce\Admin\API\Reports\Revenue\Query->get_data, WC_Data_Store->__call, Automattic\WooCommerce\Admin\API\Reports\DataStore->get_data, Automattic\WooCommerce\Admin\API\Reports\Orders\Stats\DataStore->get_noncached_data, Automattic\WooCommerce\Admin\API\Reports\Orders\Stats\DataStore->get_noncached_stats_data, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[06-Apr-2026 02:40:20 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>
+			SELECT
+				CONCAT(YEAR(wp_wc_order_stats.`date_paid`), '-', LPAD( FLOOR( ( DAYOFYEAR(wp_wc_order_stats.`date_paid`) + ( ( DATE_FORMAT(MAKEDATE(YEAR(wp_wc_order_stats.`date_paid`),1), '%w') - 0 + 7 ) % 7 ) - 1 ) / 7  ) + 1 , 2, '0')) AS time_interval , MAX(wp_wc_order_stats.date_paid) AS datetime_anchor , SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN 1 ELSE 0 END ) as orders_count, SUM(wp_wc_order_stats.num_items_sold) as num_items_sold, SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN wp_wc_order_stats.total_sales - wp_wc_order_stats.tax_total - wp_wc_order_stats.shipping_total ELSE 0 END ) + COALESCE( SUM(discount_amount), 0 ) as gross_sales, SUM(wp_wc_order_stats.total_sales) AS total_sales, COALESCE( SUM(discount_amount), 0 ) AS coupons, COALESCE( coupons_count, 0 ) as coupons_count, ABS( SUM( CASE WHEN wp_wc_order_stats.net_total < 0 THEN wp_wc_order_stats.net_total + wp_wc_order_stats.tax_total + wp_wc_order_stats.shipping_total ELSE 0 END ) ) AS refunds, SUM(wp_wc_order_stats.tax_total) AS taxes, SUM(wp_wc_order_stats.shipping_total) AS shipping, SUM(wp_wc_order_stats.net_total) AS net_revenue, SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN wp_wc_order_stats.num_items_sold ELSE 0 END ) / SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN 1 ELSE 0 END ) AS avg_items_per_order, SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN wp_wc_order_stats.net_total ELSE 0 END ) / SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN 1 ELSE 0 END ) AS avg_order_value, COUNT( DISTINCT( wp_wc_order_stats.customer_id ) ) as total_customers
+			FROM
+				wp_wc_order_stats
+				LEFT JOIN (
+					SELECT
+						order_id,
+						SUM(discount_amount) AS discount_amount,
+						COUNT(DISTINCT coupon_id) AS coupons_count
+					FROM
+						wp_wc_order_coupon_lookup
+					GROUP BY
+						order_id
+					) order_coupon_lookup
+					ON order_coupon_lookup.order_id = wp_wc_order_stats.order_id
+			WHERE
+				1=1
+				AND ( wp_wc_order_stats.status NOT IN ( 'wc-auto-draft','wc-trash','wc-pending','wc-failed','wc-cancelled','wc-checkout-draft' ) ) AND wp_wc_order_stats.`date_paid` <= '2026-04-05 22:40:16' AND wp_wc_order_stats.`date_paid` >= '2026-04-05 00:00:00'
+		
+				GROUP BY
+					time_interval
+			
+				ORDER BY
+					time_interval desc
+			LIMIT 0,10</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: 
+			SELECT
+				(YEAR(wp_wc_order_stats.`date_paid`)|| :param0 || LPAD( FLOOR( ( DAYOFYEAR(wp_wc_order_stats.`date_paid`) + ( ( STRFTIME(&#039;1&#039;,MAKEDATE(YEAR(wp_wc_order_stats.`date_paid`)), :param1 ) - 0 + 7 ) % 7 ) - 1 ) / 7  ) + 1 , 2, :param2 )) AS time_interval , MAX(wp_wc_order_stats.date_paid) AS datetime_anchor , SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN 1 ELSE 0 END ) as orders_count, SUM(wp_wc_order_stats.num_items_sold) as num_items_sold, SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN wp_wc_order_stats.total_sales - wp_wc_order_stats.tax_total - wp_wc_order_stats.shipping_total ELSE 0 END ) + COALESCE( SUM(discount_amount), 0 ) as gross_sales, SUM(wp_wc_order_stats.total_sales) AS total_sales, COALESCE( SUM(discount_amount), 0 ) AS coupons, COALESCE( coupons_count, 0 ) as coupons_count, ABS( SUM( CASE WHEN wp_wc_order_stats.net_total &lt; 0 THEN wp_wc_order_stats.net_total + wp_wc_order_stats.tax_total + wp_wc_order_stats.shipping_total ELSE 0 END ) ) AS refunds, SUM(wp_wc_order_stats.tax_total) AS taxes, SUM(wp_wc_order_stats.shipping_total) AS shipping, SUM(wp_wc_order_stats.net_total) AS net_revenue, SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN wp_wc_order_stats.num_items_sold ELSE 0 END ) / SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN 1 ELSE 0 END ) AS avg_items_per_order, SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN wp_wc_order_stats.net_total ELSE 0 END ) / SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN 1 ELSE 0 END ) AS avg_order_value, COUNT( DISTINCT( wp_wc_order_stats.customer_id ) ) as total_customers
+			FROM
+				wp_wc_order_stats
+				LEFT JOIN (
+					SELECT
+						order_id,
+						SUM(discount_amount) AS discount_amount,
+						COUNT(DISTINCT coupon_id) AS coupons_count
+					FROM
+						wp_wc_order_coupon_lookup
+					GROUP BY
+						order_id
+					) order_coupon_lookup
+					ON order_coupon_lookup.order_id = wp_wc_order_stats.order_id
+			WHERE
+				1=1
+				AND ( wp_wc_order_stats.status NOT IN ( :param3 ,:param4 ,:param5 ,:param6 ,:param7 ,:param8  ) ) AND wp_wc_order_stats.`date_paid` &lt;= :param9  AND wp_wc_order_stats.`date_paid` &gt;= :param10 
+		
+				GROUP BY
+					time_interval
+			
+				ORDER BY
+					time_interval desc
+			LIMIT 0,10 | parameters: -, %w, 0, wc-auto-draft, wc-trash, wc-pending, wc-failed, wc-cancelled, wc-checkout-draft, 2026-04-05 22:40:16, 2026-04-05 00:00:00</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4117 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 no such function: LPAD.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /workspaces/Assignment-3/.wordpress/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /workspaces/Assignment-3/.wordpress/wp-includes/class-wpdb.php(3156): WP_SQLite_DB->query('\n\t\t\tSELECT\n\t\t\t\t...')
+#2 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/Orders/Stats/DataStore.php(413): wpdb->get_results('\n\t\t\tSELECT\n\t\t\t\t...', 'ARRAY_A')
+#3 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/StatsDataStoreTrait.php(111): Automattic\WooCommerce\Admin\API\Reports\Orders\Stats\DataStore->get_noncached_stats_data(Array, Array, Object(stdClass), 1)
+#4 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/DataStore.php(237): Automattic\WooCommerce\Admin\API\Reports\Orders\Stats\DataStore->get_noncached_data(Array)
+#5 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/includes/class-wc-data-store.php(224): Automattic\WooCommerce\Admin\API\Reports\DataStore->get_data(Array)
+#6 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/Revenue/Query.php(67): WC_Data_Store->__call('get_data', Array)
+#7 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/Revenue/Stats/Controller.php(71): Automattic\WooCommerce\Admin\API\Reports\Revenue\Query->get_data()
+#8 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/GenericStatsController.php(223): Automattic\WooCommerce\Admin\API\Reports\Revenue\Stats\Controller->get_datastore_data(Array)
+#9 /workspaces/Assignment-3/.wordpress/wp-includes/rest-api/class-wp-rest-server.php(1292): Automattic\WooCommerce\Admin\API\Reports\GenericStatsController->get_items(Object(WP_REST_Request))
+#10 /workspaces/Assignment-3/.wordpress/wp-includes/rest-api/class-wp-rest-server.php(1125): WP_REST_Server->respond_to_request(Object(WP_REST_Request), '/wc-analytics/r...', Array, NULL)
+#11 /workspaces/Assignment-3/.wordpress/wp-includes/rest-api.php(594): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#12 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/PerformanceIndicators/Controller.php(389): rest_do_request(Object(WP_REST_Request))
+#13 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/PerformanceIndicators/Controller.php(426): Automattic\WooCommerce\Admin\API\Reports\PerformanceIndicators\Controller->get_stats_data('revenue', Array)
+#14 /workspaces/Assignment-3/.wordpress/wp-includes/rest-api/class-wp-rest-server.php(1292): Automattic\WooCommerce\Admin\API\Reports\PerformanceIndicators\Controller->get_items(Object(WP_REST_Request))
+#15 /workspaces/Assignment-3/.wordpress/wp-includes/rest-api/class-wp-rest-server.php(1125): WP_REST_Server->respond_to_request(Object(WP_REST_Request), '/wc-analytics/r...', Array, NULL)
+#16 /workspaces/Assignment-3/.wordpress/wp-includes/rest-api/class-wp-rest-server.php(439): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#17 /workspaces/Assignment-3/.wordpress/wp-includes/rest-api.php(467): WP_REST_Server->serve_request('/wc-analytics/r...')
+#18 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): rest_api_loaded(Object(WP))
+#19 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters(NULL, Array)
+#20 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(570): WP_Hook->do_action(Array)
+#21 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp.php(418): do_action_ref_array('parse_request', Array)
+#22 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp.php(821): WP->parse_request('')
+#23 /workspaces/Assignment-3/.wordpress/wp-includes/functions.php(1343): WP->main('')
+#24 /workspaces/Assignment-3/.wordpress/wp-blog-header.php(16): wp()
+#25 /workspaces/Assignment-3/.wordpress/index.php(17): require('/workspaces/Ass...')
+#26 {main}</pre>
+ for query 
+			SELECT
+				CONCAT(YEAR(wp_wc_order_stats.`date_paid`), '-', LPAD( FLOOR( ( DAYOFYEAR(wp_wc_order_stats.`date_paid`) + ( ( DATE_FORMAT(MAKEDATE(YEAR(wp_wc_order_stats.`date_paid`),1), '%w') - 0 + 7 ) % 7 ) - 1 ) / 7  ) + 1 , 2, '0')) AS time_interval , MAX(wp_wc_order_stats.date_paid) AS datetime_anchor , SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN 1 ELSE 0 END ) as orders_count, SUM(wp_wc_order_stats.num_items_sold) as num_items_sold, SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN wp_wc_order_stats.total_sales - wp_wc_order_stats.tax_total - wp_wc_order_stats.shipping_total ELSE 0 END ) + COALESCE( SUM(discount_amount), 0 ) as gross_sales, SUM(wp_wc_order_stats.total_sales) AS total_sales, COALESCE( SUM(discount_amount), 0 ) AS coupons, COALESCE( coupons_count, 0 ) as coupons_count, ABS( SUM( CASE WHEN wp_wc_order_stats.net_total < 0 THEN wp_wc_order_stats.net_total + wp_wc_order_stats.tax_total + wp_wc_order_stats.shipping_total ELSE 0 END ) ) AS refunds, SUM(wp_wc_order_stats.tax_total) AS taxes, SUM(wp_wc_order_stats.shipping_total) AS shipping, SUM(wp_wc_order_stats.net_total) AS net_revenue, SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN wp_wc_order_stats.num_items_sold ELSE 0 END ) / SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN 1 ELSE 0 END ) AS avg_items_per_order, SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN wp_wc_order_stats.net_total ELSE 0 END ) / SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN 1 ELSE 0 END ) AS avg_order_value, COUNT( DISTINCT( wp_wc_order_stats.customer_id ) ) as total_customers
+			FROM
+				wp_wc_order_stats
+				LEFT JOIN (
+					SELECT
+						order_id,
+						SUM(discount_amount) AS discount_amount,
+						COUNT(DISTINCT coupon_id) AS coupons_count
+					FROM
+						wp_wc_order_coupon_lookup
+					GROUP BY
+						order_id
+					) order_coupon_lookup
+					ON order_coupon_lookup.order_id = wp_wc_order_stats.order_id
+			WHERE
+				1=1
+				AND ( wp_wc_order_stats.status NOT IN ( 'wc-auto-draft','wc-trash','wc-pending','wc-failed','wc-cancelled','wc-checkout-draft' ) ) AND wp_wc_order_stats.`date_paid` <= '2026-04-05 22:40:16' AND wp_wc_order_stats.`date_paid` >= '2026-04-05 00:00:00'
+		
+				GROUP BY
+					time_interval
+			
+				ORDER BY
+					time_interval desc
+			LIMIT 0,10 made by require('wp-blog-header.php'), wp, WP->main, WP->parse_request, do_action_ref_array('parse_request'), WP_Hook->do_action, WP_Hook->apply_filters, rest_api_loaded, WP_REST_Server->serve_request, WP_REST_Server->dispatch, WP_REST_Server->respond_to_request, Automattic\WooCommerce\Admin\API\Reports\PerformanceIndicators\Controller->get_items, Automattic\WooCommerce\Admin\API\Reports\PerformanceIndicators\Controller->get_stats_data, rest_do_request, WP_REST_Server->dispatch, WP_REST_Server->respond_to_request, Automattic\WooCommerce\Admin\API\Reports\GenericStatsController->get_items, Automattic\WooCommerce\Admin\API\Reports\Revenue\Stats\Controller->get_datastore_data, Automattic\WooCommerce\Admin\API\Reports\Revenue\Query->get_data, WC_Data_Store->__call, Automattic\WooCommerce\Admin\API\Reports\DataStore->get_data, Automattic\WooCommerce\Admin\API\Reports\Orders\Stats\DataStore->get_noncached_data, Automattic\WooCommerce\Admin\API\Reports\Orders\Stats\DataStore->get_noncached_stats_data, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[06-Apr-2026 02:40:21 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>
+			SELECT
+				CONCAT(YEAR(wp_wc_order_stats.`date_paid`), '-', LPAD( FLOOR( ( DAYOFYEAR(wp_wc_order_stats.`date_paid`) + ( ( DATE_FORMAT(MAKEDATE(YEAR(wp_wc_order_stats.`date_paid`),1), '%w') - 0 + 7 ) % 7 ) - 1 ) / 7  ) + 1 , 2, '0')) AS time_interval
+			FROM
+				wp_wc_order_stats
+				LEFT JOIN (
+					SELECT
+						order_id,
+						SUM(discount_amount) AS discount_amount,
+						COUNT(DISTINCT coupon_id) AS coupons_count
+					FROM
+						wp_wc_order_coupon_lookup
+					GROUP BY
+						order_id
+					) order_coupon_lookup
+					ON order_coupon_lookup.order_id = wp_wc_order_stats.order_id
+			WHERE
+				1=1
+				AND ( wp_wc_order_stats.status NOT IN ( 'wc-auto-draft','wc-trash','wc-pending','wc-failed','wc-cancelled','wc-checkout-draft' ) ) AND wp_wc_order_stats.`date_paid` <= '2026-04-04 23:59:59' AND wp_wc_order_stats.`date_paid` >= '2026-04-04 00:00:00'
+		
+				GROUP BY
+					time_interval
+			</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: 
+			SELECT
+				(YEAR(wp_wc_order_stats.`date_paid`)|| :param0 || LPAD( FLOOR( ( DAYOFYEAR(wp_wc_order_stats.`date_paid`) + ( ( STRFTIME(&#039;1&#039;,MAKEDATE(YEAR(wp_wc_order_stats.`date_paid`)), :param1 ) - 0 + 7 ) % 7 ) - 1 ) / 7  ) + 1 , 2, :param2 )) AS time_interval
+			FROM
+				wp_wc_order_stats
+				LEFT JOIN (
+					SELECT
+						order_id,
+						SUM(discount_amount) AS discount_amount,
+						COUNT(DISTINCT coupon_id) AS coupons_count
+					FROM
+						wp_wc_order_coupon_lookup
+					GROUP BY
+						order_id
+					) order_coupon_lookup
+					ON order_coupon_lookup.order_id = wp_wc_order_stats.order_id
+			WHERE
+				1=1
+				AND ( wp_wc_order_stats.status NOT IN ( :param3 ,:param4 ,:param5 ,:param6 ,:param7 ,:param8  ) ) AND wp_wc_order_stats.`date_paid` &lt;= :param9  AND wp_wc_order_stats.`date_paid` &gt;= :param10 
+		
+				GROUP BY
+					time_interval
+			 | parameters: -, %w, 0, wc-auto-draft, wc-trash, wc-pending, wc-failed, wc-cancelled, wc-checkout-draft, 2026-04-04 23:59:59, 2026-04-04 00:00:00</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4117 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 no such function: LPAD.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /workspaces/Assignment-3/.wordpress/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /workspaces/Assignment-3/.wordpress/wp-includes/class-wpdb.php(3117): WP_SQLite_DB->query('\n\t\t\tSELECT\n\t\t\t\t...')
+#2 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/Orders/Stats/DataStore.php(399): wpdb->get_col('\n\t\t\tSELECT\n\t\t\t\t...')
+#3 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/StatsDataStoreTrait.php(111): Automattic\WooCommerce\Admin\API\Reports\Orders\Stats\DataStore->get_noncached_stats_data(Array, Array, Object(stdClass), 1)
+#4 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/DataStore.php(237): Automattic\WooCommerce\Admin\API\Reports\Orders\Stats\DataStore->get_noncached_data(Array)
+#5 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/includes/class-wc-data-store.php(224): Automattic\WooCommerce\Admin\API\Reports\DataStore->get_data(Array)
+#6 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/Revenue/Query.php(67): WC_Data_Store->__call('get_data', Array)
+#7 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/Revenue/Stats/Controller.php(71): Automattic\WooCommerce\Admin\API\Reports\Revenue\Query->get_data()
+#8 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/GenericStatsController.php(223): Automattic\WooCommerce\Admin\API\Reports\Revenue\Stats\Controller->get_datastore_data(Array)
+#9 /workspaces/Assignment-3/.wordpress/wp-includes/rest-api/class-wp-rest-server.php(1292): Automattic\WooCommerce\Admin\API\Reports\GenericStatsController->get_items(Object(WP_REST_Request))
+#10 /workspaces/Assignment-3/.wordpress/wp-includes/rest-api/class-wp-rest-server.php(1125): WP_REST_Server->respond_to_request(Object(WP_REST_Request), '/wc-analytics/r...', Array, NULL)
+#11 /workspaces/Assignment-3/.wordpress/wp-includes/rest-api.php(594): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#12 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/PerformanceIndicators/Controller.php(389): rest_do_request(Object(WP_REST_Request))
+#13 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/PerformanceIndicators/Controller.php(426): Automattic\WooCommerce\Admin\API\Reports\PerformanceIndicators\Controller->get_stats_data('revenue', Array)
+#14 /workspaces/Assignment-3/.wordpress/wp-includes/rest-api/class-wp-rest-server.php(1292): Automattic\WooCommerce\Admin\API\Reports\PerformanceIndicators\Controller->get_items(Object(WP_REST_Request))
+#15 /workspaces/Assignment-3/.wordpress/wp-includes/rest-api/class-wp-rest-server.php(1125): WP_REST_Server->respond_to_request(Object(WP_REST_Request), '/wc-analytics/r...', Array, NULL)
+#16 /workspaces/Assignment-3/.wordpress/wp-includes/rest-api/class-wp-rest-server.php(439): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#17 /workspaces/Assignment-3/.wordpress/wp-includes/rest-api.php(467): WP_REST_Server->serve_request('/wc-analytics/r...')
+#18 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): rest_api_loaded(Object(WP))
+#19 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters(NULL, Array)
+#20 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(570): WP_Hook->do_action(Array)
+#21 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp.php(418): do_action_ref_array('parse_request', Array)
+#22 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp.php(821): WP->parse_request('')
+#23 /workspaces/Assignment-3/.wordpress/wp-includes/functions.php(1343): WP->main('')
+#24 /workspaces/Assignment-3/.wordpress/wp-blog-header.php(16): wp()
+#25 /workspaces/Assignment-3/.wordpress/index.php(17): require('/workspaces/Ass...')
+#26 {main}</pre>
+ for query 
+			SELECT
+				CONCAT(YEAR(wp_wc_order_stats.`date_paid`), '-', LPAD( FLOOR( ( DAYOFYEAR(wp_wc_order_stats.`date_paid`) + ( ( DATE_FORMAT(MAKEDATE(YEAR(wp_wc_order_stats.`date_paid`),1), '%w') - 0 + 7 ) % 7 ) - 1 ) / 7  ) + 1 , 2, '0')) AS time_interval
+			FROM
+				wp_wc_order_stats
+				LEFT JOIN (
+					SELECT
+						order_id,
+						SUM(discount_amount) AS discount_amount,
+						COUNT(DISTINCT coupon_id) AS coupons_count
+					FROM
+						wp_wc_order_coupon_lookup
+					GROUP BY
+						order_id
+					) order_coupon_lookup
+					ON order_coupon_lookup.order_id = wp_wc_order_stats.order_id
+			WHERE
+				1=1
+				AND ( wp_wc_order_stats.status NOT IN ( 'wc-auto-draft','wc-trash','wc-pending','wc-failed','wc-cancelled','wc-checkout-draft' ) ) AND wp_wc_order_stats.`date_paid` <= '2026-04-04 23:59:59' AND wp_wc_order_stats.`date_paid` >= '2026-04-04 00:00:00'
+		
+				GROUP BY
+					time_interval
+			 made by require('wp-blog-header.php'), wp, WP->main, WP->parse_request, do_action_ref_array('parse_request'), WP_Hook->do_action, WP_Hook->apply_filters, rest_api_loaded, WP_REST_Server->serve_request, WP_REST_Server->dispatch, WP_REST_Server->respond_to_request, Automattic\WooCommerce\Admin\API\Reports\PerformanceIndicators\Controller->get_items, Automattic\WooCommerce\Admin\API\Reports\PerformanceIndicators\Controller->get_stats_data, rest_do_request, WP_REST_Server->dispatch, WP_REST_Server->respond_to_request, Automattic\WooCommerce\Admin\API\Reports\GenericStatsController->get_items, Automattic\WooCommerce\Admin\API\Reports\Revenue\Stats\Controller->get_datastore_data, Automattic\WooCommerce\Admin\API\Reports\Revenue\Query->get_data, WC_Data_Store->__call, Automattic\WooCommerce\Admin\API\Reports\DataStore->get_data, Automattic\WooCommerce\Admin\API\Reports\Orders\Stats\DataStore->get_noncached_data, Automattic\WooCommerce\Admin\API\Reports\Orders\Stats\DataStore->get_noncached_stats_data, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[06-Apr-2026 02:40:21 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>
+			SELECT
+				CONCAT(YEAR(wp_wc_order_stats.`date_paid`), '-', LPAD( FLOOR( ( DAYOFYEAR(wp_wc_order_stats.`date_paid`) + ( ( DATE_FORMAT(MAKEDATE(YEAR(wp_wc_order_stats.`date_paid`),1), '%w') - 0 + 7 ) % 7 ) - 1 ) / 7  ) + 1 , 2, '0')) AS time_interval , MAX(wp_wc_order_stats.date_paid) AS datetime_anchor , SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN 1 ELSE 0 END ) as orders_count, SUM(wp_wc_order_stats.num_items_sold) as num_items_sold, SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN wp_wc_order_stats.total_sales - wp_wc_order_stats.tax_total - wp_wc_order_stats.shipping_total ELSE 0 END ) + COALESCE( SUM(discount_amount), 0 ) as gross_sales, SUM(wp_wc_order_stats.total_sales) AS total_sales, COALESCE( SUM(discount_amount), 0 ) AS coupons, COALESCE( coupons_count, 0 ) as coupons_count, ABS( SUM( CASE WHEN wp_wc_order_stats.net_total < 0 THEN wp_wc_order_stats.net_total + wp_wc_order_stats.tax_total + wp_wc_order_stats.shipping_total ELSE 0 END ) ) AS refunds, SUM(wp_wc_order_stats.tax_total) AS taxes, SUM(wp_wc_order_stats.shipping_total) AS shipping, SUM(wp_wc_order_stats.net_total) AS net_revenue, SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN wp_wc_order_stats.num_items_sold ELSE 0 END ) / SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN 1 ELSE 0 END ) AS avg_items_per_order, SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN wp_wc_order_stats.net_total ELSE 0 END ) / SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN 1 ELSE 0 END ) AS avg_order_value, COUNT( DISTINCT( wp_wc_order_stats.customer_id ) ) as total_customers
+			FROM
+				wp_wc_order_stats
+				LEFT JOIN (
+					SELECT
+						order_id,
+						SUM(discount_amount) AS discount_amount,
+						COUNT(DISTINCT coupon_id) AS coupons_count
+					FROM
+						wp_wc_order_coupon_lookup
+					GROUP BY
+						order_id
+					) order_coupon_lookup
+					ON order_coupon_lookup.order_id = wp_wc_order_stats.order_id
+			WHERE
+				1=1
+				AND ( wp_wc_order_stats.status NOT IN ( 'wc-auto-draft','wc-trash','wc-pending','wc-failed','wc-cancelled','wc-checkout-draft' ) ) AND wp_wc_order_stats.`date_paid` <= '2026-04-04 23:59:59' AND wp_wc_order_stats.`date_paid` >= '2026-04-04 00:00:00'
+		
+				GROUP BY
+					time_interval
+			
+				ORDER BY
+					time_interval desc
+			LIMIT 0,10</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: 
+			SELECT
+				(YEAR(wp_wc_order_stats.`date_paid`)|| :param0 || LPAD( FLOOR( ( DAYOFYEAR(wp_wc_order_stats.`date_paid`) + ( ( STRFTIME(&#039;1&#039;,MAKEDATE(YEAR(wp_wc_order_stats.`date_paid`)), :param1 ) - 0 + 7 ) % 7 ) - 1 ) / 7  ) + 1 , 2, :param2 )) AS time_interval , MAX(wp_wc_order_stats.date_paid) AS datetime_anchor , SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN 1 ELSE 0 END ) as orders_count, SUM(wp_wc_order_stats.num_items_sold) as num_items_sold, SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN wp_wc_order_stats.total_sales - wp_wc_order_stats.tax_total - wp_wc_order_stats.shipping_total ELSE 0 END ) + COALESCE( SUM(discount_amount), 0 ) as gross_sales, SUM(wp_wc_order_stats.total_sales) AS total_sales, COALESCE( SUM(discount_amount), 0 ) AS coupons, COALESCE( coupons_count, 0 ) as coupons_count, ABS( SUM( CASE WHEN wp_wc_order_stats.net_total &lt; 0 THEN wp_wc_order_stats.net_total + wp_wc_order_stats.tax_total + wp_wc_order_stats.shipping_total ELSE 0 END ) ) AS refunds, SUM(wp_wc_order_stats.tax_total) AS taxes, SUM(wp_wc_order_stats.shipping_total) AS shipping, SUM(wp_wc_order_stats.net_total) AS net_revenue, SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN wp_wc_order_stats.num_items_sold ELSE 0 END ) / SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN 1 ELSE 0 END ) AS avg_items_per_order, SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN wp_wc_order_stats.net_total ELSE 0 END ) / SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN 1 ELSE 0 END ) AS avg_order_value, COUNT( DISTINCT( wp_wc_order_stats.customer_id ) ) as total_customers
+			FROM
+				wp_wc_order_stats
+				LEFT JOIN (
+					SELECT
+						order_id,
+						SUM(discount_amount) AS discount_amount,
+						COUNT(DISTINCT coupon_id) AS coupons_count
+					FROM
+						wp_wc_order_coupon_lookup
+					GROUP BY
+						order_id
+					) order_coupon_lookup
+					ON order_coupon_lookup.order_id = wp_wc_order_stats.order_id
+			WHERE
+				1=1
+				AND ( wp_wc_order_stats.status NOT IN ( :param3 ,:param4 ,:param5 ,:param6 ,:param7 ,:param8  ) ) AND wp_wc_order_stats.`date_paid` &lt;= :param9  AND wp_wc_order_stats.`date_paid` &gt;= :param10 
+		
+				GROUP BY
+					time_interval
+			
+				ORDER BY
+					time_interval desc
+			LIMIT 0,10 | parameters: -, %w, 0, wc-auto-draft, wc-trash, wc-pending, wc-failed, wc-cancelled, wc-checkout-draft, 2026-04-04 23:59:59, 2026-04-04 00:00:00</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4117 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 no such function: LPAD.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /workspaces/Assignment-3/.wordpress/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /workspaces/Assignment-3/.wordpress/wp-includes/class-wpdb.php(3156): WP_SQLite_DB->query('\n\t\t\tSELECT\n\t\t\t\t...')
+#2 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/Orders/Stats/DataStore.php(413): wpdb->get_results('\n\t\t\tSELECT\n\t\t\t\t...', 'ARRAY_A')
+#3 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/StatsDataStoreTrait.php(111): Automattic\WooCommerce\Admin\API\Reports\Orders\Stats\DataStore->get_noncached_stats_data(Array, Array, Object(stdClass), 1)
+#4 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/DataStore.php(237): Automattic\WooCommerce\Admin\API\Reports\Orders\Stats\DataStore->get_noncached_data(Array)
+#5 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/includes/class-wc-data-store.php(224): Automattic\WooCommerce\Admin\API\Reports\DataStore->get_data(Array)
+#6 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/Revenue/Query.php(67): WC_Data_Store->__call('get_data', Array)
+#7 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/Revenue/Stats/Controller.php(71): Automattic\WooCommerce\Admin\API\Reports\Revenue\Query->get_data()
+#8 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/GenericStatsController.php(223): Automattic\WooCommerce\Admin\API\Reports\Revenue\Stats\Controller->get_datastore_data(Array)
+#9 /workspaces/Assignment-3/.wordpress/wp-includes/rest-api/class-wp-rest-server.php(1292): Automattic\WooCommerce\Admin\API\Reports\GenericStatsController->get_items(Object(WP_REST_Request))
+#10 /workspaces/Assignment-3/.wordpress/wp-includes/rest-api/class-wp-rest-server.php(1125): WP_REST_Server->respond_to_request(Object(WP_REST_Request), '/wc-analytics/r...', Array, NULL)
+#11 /workspaces/Assignment-3/.wordpress/wp-includes/rest-api.php(594): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#12 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/PerformanceIndicators/Controller.php(389): rest_do_request(Object(WP_REST_Request))
+#13 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/Admin/API/Reports/PerformanceIndicators/Controller.php(426): Automattic\WooCommerce\Admin\API\Reports\PerformanceIndicators\Controller->get_stats_data('revenue', Array)
+#14 /workspaces/Assignment-3/.wordpress/wp-includes/rest-api/class-wp-rest-server.php(1292): Automattic\WooCommerce\Admin\API\Reports\PerformanceIndicators\Controller->get_items(Object(WP_REST_Request))
+#15 /workspaces/Assignment-3/.wordpress/wp-includes/rest-api/class-wp-rest-server.php(1125): WP_REST_Server->respond_to_request(Object(WP_REST_Request), '/wc-analytics/r...', Array, NULL)
+#16 /workspaces/Assignment-3/.wordpress/wp-includes/rest-api/class-wp-rest-server.php(439): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#17 /workspaces/Assignment-3/.wordpress/wp-includes/rest-api.php(467): WP_REST_Server->serve_request('/wc-analytics/r...')
+#18 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): rest_api_loaded(Object(WP))
+#19 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters(NULL, Array)
+#20 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(570): WP_Hook->do_action(Array)
+#21 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp.php(418): do_action_ref_array('parse_request', Array)
+#22 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp.php(821): WP->parse_request('')
+#23 /workspaces/Assignment-3/.wordpress/wp-includes/functions.php(1343): WP->main('')
+#24 /workspaces/Assignment-3/.wordpress/wp-blog-header.php(16): wp()
+#25 /workspaces/Assignment-3/.wordpress/index.php(17): require('/workspaces/Ass...')
+#26 {main}</pre>
+ for query 
+			SELECT
+				CONCAT(YEAR(wp_wc_order_stats.`date_paid`), '-', LPAD( FLOOR( ( DAYOFYEAR(wp_wc_order_stats.`date_paid`) + ( ( DATE_FORMAT(MAKEDATE(YEAR(wp_wc_order_stats.`date_paid`),1), '%w') - 0 + 7 ) % 7 ) - 1 ) / 7  ) + 1 , 2, '0')) AS time_interval , MAX(wp_wc_order_stats.date_paid) AS datetime_anchor , SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN 1 ELSE 0 END ) as orders_count, SUM(wp_wc_order_stats.num_items_sold) as num_items_sold, SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN wp_wc_order_stats.total_sales - wp_wc_order_stats.tax_total - wp_wc_order_stats.shipping_total ELSE 0 END ) + COALESCE( SUM(discount_amount), 0 ) as gross_sales, SUM(wp_wc_order_stats.total_sales) AS total_sales, COALESCE( SUM(discount_amount), 0 ) AS coupons, COALESCE( coupons_count, 0 ) as coupons_count, ABS( SUM( CASE WHEN wp_wc_order_stats.net_total < 0 THEN wp_wc_order_stats.net_total + wp_wc_order_stats.tax_total + wp_wc_order_stats.shipping_total ELSE 0 END ) ) AS refunds, SUM(wp_wc_order_stats.tax_total) AS taxes, SUM(wp_wc_order_stats.shipping_total) AS shipping, SUM(wp_wc_order_stats.net_total) AS net_revenue, SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN wp_wc_order_stats.num_items_sold ELSE 0 END ) / SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN 1 ELSE 0 END ) AS avg_items_per_order, SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN wp_wc_order_stats.net_total ELSE 0 END ) / SUM( CASE WHEN wp_wc_order_stats.parent_id = 0 THEN 1 ELSE 0 END ) AS avg_order_value, COUNT( DISTINCT( wp_wc_order_stats.customer_id ) ) as total_customers
+			FROM
+				wp_wc_order_stats
+				LEFT JOIN (
+					SELECT
+						order_id,
+						SUM(discount_amount) AS discount_amount,
+						COUNT(DISTINCT coupon_id) AS coupons_count
+					FROM
+						wp_wc_order_coupon_lookup
+					GROUP BY
+						order_id
+					) order_coupon_lookup
+					ON order_coupon_lookup.order_id = wp_wc_order_stats.order_id
+			WHERE
+				1=1
+				AND ( wp_wc_order_stats.status NOT IN ( 'wc-auto-draft','wc-trash','wc-pending','wc-failed','wc-cancelled','wc-checkout-draft' ) ) AND wp_wc_order_stats.`date_paid` <= '2026-04-04 23:59:59' AND wp_wc_order_stats.`date_paid` >= '2026-04-04 00:00:00'
+		
+				GROUP BY
+					time_interval
+			
+				ORDER BY
+					time_interval desc
+			LIMIT 0,10 made by require('wp-blog-header.php'), wp, WP->main, WP->parse_request, do_action_ref_array('parse_request'), WP_Hook->do_action, WP_Hook->apply_filters, rest_api_loaded, WP_REST_Server->serve_request, WP_REST_Server->dispatch, WP_REST_Server->respond_to_request, Automattic\WooCommerce\Admin\API\Reports\PerformanceIndicators\Controller->get_items, Automattic\WooCommerce\Admin\API\Reports\PerformanceIndicators\Controller->get_stats_data, rest_do_request, WP_REST_Server->dispatch, WP_REST_Server->respond_to_request, Automattic\WooCommerce\Admin\API\Reports\GenericStatsController->get_items, Automattic\WooCommerce\Admin\API\Reports\Revenue\Stats\Controller->get_datastore_data, Automattic\WooCommerce\Admin\API\Reports\Revenue\Query->get_data, WC_Data_Store->__call, Automattic\WooCommerce\Admin\API\Reports\DataStore->get_data, Automattic\WooCommerce\Admin\API\Reports\Orders\Stats\DataStore->get_noncached_data, Automattic\WooCommerce\Admin\API\Reports\Orders\Stats\DataStore->get_noncached_stats_data, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[06-Apr-2026 02:41:09 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-04-06 02:41:09' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=54, last_attempt_gmt='2026-04-06 02:41:09', last_attempt_local='2026-04-05 22:41:09'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=54, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2026-04-06 02:41:09, pending, 2026-04-06 02:41:09, 2026-04-05 22:41:09</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4117 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /workspaces/Assignment-3/.wordpress/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(54, 25, NULL, '', '')
+#3 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'Async Request')
+#6 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): ActionScheduler_QueueRunner->run('Async Request')
+#7 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#8 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(522): WP_Hook->do_action(Array)
+#9 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_AsyncRequest_QueueRunner.php(48): do_action('action_schedule...', 'Async Request')
+#10 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/includes/libraries/wp-async-request.php(147): ActionScheduler_AsyncRequest_QueueRunner->handle()
+#11 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): WP_Async_Request->maybe_handle('')
+#12 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#13 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(522): WP_Hook->do_action(Array)
+#14 /workspaces/Assignment-3/.wordpress/wp-admin/admin-ajax.php(192): do_action('wp_ajax_as_asyn...')
+#15 {main}</pre>
+ for query UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-04-06 02:41:09' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=54, last_attempt_gmt='2026-04-06 02:41:09', last_attempt_local='2026-04-05 22:41:09' made by do_action('wp_ajax_as_async_request_queue_runner'), WP_Hook->do_action, WP_Hook->apply_filters, WP_Async_Request->maybe_handle, ActionScheduler_AsyncRequest_QueueRunner->handle, do_action('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, ActionScheduler_QueueRunner->do_batch, ActionScheduler_HybridStore->stake_claim, ActionScheduler_DBStore->stake_claim, ActionScheduler_DBStore->claim_actions, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[06-Apr-2026 02:41:09 UTC] PHP Fatal error:  Uncaught RuntimeException: Unable to claim actions. Database error: <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-04-06 02:41:09' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=54, last_attempt_gmt='2026-04-06 02:41:09', last_attempt_local='2026-04-05 22:41:09'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=54, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2026-04-06 02:41:09, pending, 2026-04-06 02:41:09, 2026-04-05 22:41:09</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4117 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /workspaces/Assignment-3/.wordpress/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(54, 25, NULL, '', '')
+#3 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'Async Request')
+#6 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): ActionScheduler_QueueRunner->run('Async Request')
+#7 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#8 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(522): WP_Hook->do_action(Array)
+#9 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_AsyncRequest_QueueRunner.php(48): do_action('action_schedule...', 'Async Request')
+#10 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/includes/libraries/wp-async-request.php(147): ActionScheduler_AsyncRequest_QueueRunner->handle()
+#11 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): WP_Async_Request->maybe_handle('')
+#12 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#13 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(522): WP_Hook->do_action(Array)
+#14 /workspaces/Assignment-3/.wordpress/wp-admin/admin-ajax.php(192): do_action('wp_ajax_as_asyn...')
+#15 {main}</pre>
+. in /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php:1019
+Stack trace:
+#0 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(54, 25, NULL, '', '')
+#1 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#2 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#3 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'Async Request')
+#4 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): ActionScheduler_QueueRunner->run('Async Request')
+#5 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#6 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(522): WP_Hook->do_action(Array)
+#7 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_AsyncRequest_QueueRunner.php(48): do_action('action_schedule...', 'Async Request')
+#8 /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/includes/libraries/wp-async-request.php(147): ActionScheduler_AsyncRequest_QueueRunner->handle()
+#9 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(341): WP_Async_Request->maybe_handle('')
+#10 /workspaces/Assignment-3/.wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#11 /workspaces/Assignment-3/.wordpress/wp-includes/plugin.php(522): WP_Hook->do_action(Array)
+#12 /workspaces/Assignment-3/.wordpress/wp-admin/admin-ajax.php(192): do_action('wp_ajax_as_asyn...')
+#13 {main}
+  thrown in /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php on line 1019
+[06-Apr-2026 02:42:12 UTC] PHP Fatal error:  Out of memory (allocated 67108864 bytes) (tried to allocate 4194304 bytes) in /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/vendor/automattic/jetpack-assets/src/class-assets.php on line 471
+[06-Apr-2026 02:42:12 UTC] PHP Fatal error:  Out of memory (allocated 67108864 bytes) (tried to allocate 4194304 bytes) in /workspaces/Assignment-3/.wordpress/wp-includes/sodium_compat/src/Core/Util.php on line 12
+[06-Apr-2026 02:43:12 UTC] PHP Fatal error:  Out of memory (allocated 60817408 bytes) (tried to allocate 4194304 bytes) in /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/vendor/automattic/jetpack-assets/src/class-assets.php on line 471
+[06-Apr-2026 02:43:12 UTC] PHP Fatal error:  Out of memory (allocated 60817408 bytes) (tried to allocate 4194304 bytes) in /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/includes/class-wc-log-levels.php on line 44
+[06-Apr-2026 02:44:12 UTC] PHP Fatal error:  Out of memory (allocated 54525952 bytes) (tried to allocate 2097152 bytes) in /workspaces/Assignment-3/.wordpress/wp-content/plugins/woocommerce/src/StoreApi/Schemas/V1/AbstractAddressSchema.php on line 139
+[06-Apr-2026 02:44:12 UTC] PHP Fatal error:  Out of memory (allocated 54525952 bytes) (tried to allocate 2097152 bytes) in /workspaces/Assignment-3/.wordpress/wp-includes/pluggable.php on line 41
